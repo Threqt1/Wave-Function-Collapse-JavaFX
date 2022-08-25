@@ -1,0 +1,76 @@
+{
+  "templates": [
+    {
+      "name": "3 Bricks",
+      "path": "data/img/3bricks.png",
+      "tile-size": 3,
+      "variation": 1,
+      "ground-x": 0,
+      "ground-y": 0
+    },
+    {
+      "name": "City",
+      "path": "data/img/city.png",
+      "tile-size": 3,
+      "variation": 2,
+      "ground-x": 0,
+      "ground-y": 27
+    },
+    {
+      "name": "Flowers",
+      "path": "data/img/flowers.png",
+      "tile-size": 3,
+      "variation": 2,
+      "ground-x": 0,
+      "ground-y": 22
+    },
+    {
+      "name": "Maze",
+      "path": "data/img/maze.png",
+      "tile-size": 2,
+      "variation": 8,
+      "ground-x": 0,
+      "ground-y": 0
+    },
+    {
+      "name": "Platformer",
+      "path": "data/img/platformer.png",
+      "tile-size": 3,
+      "variation": 2,
+      "ground-x": 0,
+      "ground-y": 31
+    },
+    {
+      "name": "Rooms",
+      "path": "data/img/rooms.png",
+      "tile-size": 3,
+      "variation": 8,
+      "ground-x": 0,
+      "ground-y": 0
+    },
+    {
+      "name": "Rooms 2",
+      "path": "data/img/rooms2.png",
+      "tile-size": 3,
+      "variation": 8,
+      "ground-x": 0,
+      "ground-y": 0
+    },
+    {
+      "name": "Wall",
+      "path": "data/img/wall.png",
+      "tile-size": 3,
+      "variation": 2,
+      "ground-x": 0,
+      "ground-y": 0
+    },
+    {
+      "name": "Circuit Board",
+      "path": "data/img/circuit-board.png",
+      "tile-size": 2,
+      "variation": 8,
+      "ground-x": 0,
+      "ground-y": 0
+    }
+  ]
+}
