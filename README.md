@@ -17,3 +17,14 @@ mvn package
 
 mvn javafx:run
 ```
+
+## 📱 The App
+<img src="images/app_preview.png"/>
+
+### Features
+- Full control over canvas coloring, size, and height
+- Control over algorithm tile size and variation, as well as ability to set ground (right click on canvas)
+- Control over output width/height, as well as saving the output
+- Ability to import a pattern (<50x50 in size)
+- Built-In Templates
+- Zooming in/out
