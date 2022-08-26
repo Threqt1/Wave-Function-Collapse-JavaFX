@@ -1,6 +1,6 @@
 <h1 align="center">Wave Function Collapse JavaFX</h1>
 <p align="center">
-<img src="https://img.shields.io/badge/language-java-orange?style=flat-square">
+<img src="https://img.shields.io/badge/language-java-orange?style=flat-square&logo=oracle">
 </p>
 
 <hr>
