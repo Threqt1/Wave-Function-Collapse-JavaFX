@@ -32,4 +32,4 @@ mvn javafx:run
 ## Credits
 - [The Original WFC Repository by mxgmn](https://github.com/mxgmn/WaveFunctionCollapse#readme)
 - [The Javascript Implementation of WFC](https://github.com/kchapelier/wavefunctioncollapse)
-- [This Wonderful Artical on WFC](https://www.gridbugs.org/wave-function-collapse/)
+- [This Wonderful Article on WFC](https://www.gridbugs.org/wave-function-collapse/)
