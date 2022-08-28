@@ -28,3 +28,8 @@ mvn javafx:run
 - Ability to import a pattern (<50x50 in size)
 - Built-In Templates
 - Zooming in/out
+
+## Credits
+- [The Original WFC Repository by mxgmn](https://github.com/mxgmn/WaveFunctionCollapse#readme)
+- [The Javascript Implementation of WFC](https://github.com/kchapelier/wavefunctioncollapse)
+- [This Wonderful Artical on WFC](https://www.gridbugs.org/wave-function-collapse/)
