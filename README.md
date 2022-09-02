@@ -3,7 +3,7 @@
 <a href="https://www.oracle.com/java/"><img src="https://img.shields.io/badge/language-java-orange?style=flat-square&logo=oracle"></a>
 </p>
 
-The Wave Function Collapse algorithm by mxgmn implemented in a JavaFX Application
+<p align="center">The Wave Function Collapse algorithm by mxgmn implemented in a JavaFX Application</p>
 
 <hr>
 
