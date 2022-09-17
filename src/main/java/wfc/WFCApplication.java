@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class WFCApplication extends Application {
-    static final String version = "1.6.0";
+    static final String version = "1.6.1";
     public static void main(String[] args) {
         launch();
     }

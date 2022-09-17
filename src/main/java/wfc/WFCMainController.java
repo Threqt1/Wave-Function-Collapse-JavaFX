@@ -288,7 +288,7 @@ public class WFCMainController implements Initializable {
             if (currentlyGenerating) return;
             currentlyGenerating = true;
             wfcModel.loadNew(tileSize, canvasPixelSize, variation, ground, outWidth, outHeight);
-            generateOutput(0);
+            generateOutput();
         });
 
         zoomSlider.valueProperty().addListener((event, oldValue, newValue) -> {
@@ -460,34 +460,55 @@ public class WFCMainController implements Initializable {
         handleGroundChange(groundX, groundY);
     }
 
-    void generateOutput(int currRetries) {
+    void generateOutput() {
+        long start = System.currentTimeMillis();
         boolean generation = wfcModel.generate(0);
         if (generation) {
             BufferedImage result = wfcModel.postProcessImage(-1);
             try {
-                presentOutput(result, currRetries);
+                presentOutput(result, 0, System.currentTimeMillis() - start);
             } catch (IOException ignored) {
             }
         } else {
-            if (currRetries < retries) {
-                generateOutput(currRetries + 1);
+            if (0 < retries) {
+                generateOutput(1, start);
             } else {
                 try {
-                    presentFail();
+                    presentFail(System.currentTimeMillis() - start);
                 } catch (IOException ignored) {
                 }
             }
         }
     }
 
-    void presentOutput(BufferedImage image, int triesTaken) throws IOException {
+    void generateOutput(int currRetries, long timestamp) {
+        boolean generation = wfcModel.generate(0);
+        if (generation) {
+            BufferedImage result = wfcModel.postProcessImage(-1);
+            try {
+                presentOutput(result, currRetries, System.currentTimeMillis() - timestamp);
+            } catch (IOException ignored) {
+            }
+        } else {
+            if (currRetries < retries) {
+                generateOutput(currRetries + 1, timestamp);
+            } else {
+                try {
+                    presentFail(System.currentTimeMillis() - timestamp);
+                } catch (IOException ignored) {
+                }
+            }
+        }
+    }
+
+    void presentOutput(BufferedImage image, int triesTaken, long timeTaken) throws IOException {
         FXMLLoader generatedModalFXML = new FXMLLoader(getClass().getResource("/wfc/WFCOutputModal.fxml"));
         Parent generatedModal = generatedModalFXML.load();
         WFCOutputController modalController = generatedModalFXML.getController();
 
         Scene modalScene = new Scene(generatedModal);
         Stage modalStage = new Stage(StageStyle.DECORATED);
-        modalStage.setTitle("Generated Output " + outWidth + "x" + outWidth + " - " + (triesTaken + 1) + " attempt(s)");
+        modalStage.setTitle("Generated Output " + outWidth + "x" + outWidth + " - " + (triesTaken + 1) + " attempt(s) - " + timeTaken + "ms");
         modalStage.initOwner(mainPane.getScene().getWindow());
         modalStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -501,14 +522,14 @@ public class WFCMainController implements Initializable {
         modalStage.show();
     }
 
-    void presentFail() throws IOException {
+    void presentFail(long timeTaken) throws IOException {
         FXMLLoader generatedModalFXML = new FXMLLoader(getClass().getResource("/wfc/WFCFailModal.fxml"));
         Parent generatedModal = generatedModalFXML.load();
         WFCFailController modalController = generatedModalFXML.getController();
 
         Scene modalScene = new Scene(generatedModal);
         Stage modalStage = new Stage(StageStyle.DECORATED);
-        modalStage.setTitle("Failed");
+        modalStage.setTitle("Failed - " + timeTaken + "ms");
         modalStage.initOwner(mainPane.getScene().getWindow());
         modalStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -518,7 +539,7 @@ public class WFCMainController implements Initializable {
 
         modalStage.setOnHidden(event -> {
             if (modalController.getBooleanProperty()) {
-                generateOutput(0);
+                generateOutput();
             } else {
                 currentlyGenerating = false;
             }
